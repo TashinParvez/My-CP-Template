@@ -67,6 +67,8 @@
 	  "#define vc vector<char>",
 	  "#define vs vector<string>",
 	  "#define vb vector<bool>",
+	  "#define vii vector<pair<int, int>>",
+	  "#define vsi vector<pair<string, int>>",
 	  "",
 	  "#define pb  push_back",
 	  "#define pop pop_back",
