@@ -77,9 +77,13 @@ void __f(const char *names, Arg1 &&arg1, Args &&...args)
 
 
 //--------------------------------- FOR --------------------------------
-#define FOR0(n)                  for (int i = 0; i < (int)(n); i++)     //___ 0 to < N
-#define FOR1(i, n)               for (int i = 1; i <= (int)(n); i++) //___ 1 to <= N
-#define FOR2(a, n)               for (int i = a; i < n; i++) //___ A to < N
+
+#define FOR_OVERLOAD(_1, _2, NAME, ...) NAME
+#define FOR(...)                 FOR_OVERLOAD(__VA_ARGS__, FOR_TWO_ARGS, FOR_ONE_ARG)(__VA_ARGS__)
+
+#define FOR_ONE_ARG(n)           for(int i = 0; i < (n); i++)
+#define FOR_TWO_ARGS(a, b)       for(int i = (a); (a) <= (b) ? (i < (b)) : (i > (b)); (a) <= (b) ? ++i : --i)
+
 
 //-------------------------------- Vector -------------------------------
 #define vi                       vector<int>
@@ -148,6 +152,8 @@ void printarray(int arr[], int len)
 5. Check base cases for DP and prove solution for Greedy
 6. Think Graph 
 
+7. SubArray / Continious / SubSegment  =  PrefixSum
+
 */
 
 const double PI = 3.1415926535;
@@ -195,6 +201,7 @@ int32_t main()
 
     CRACKED;
 }
+
 
 ```
 
