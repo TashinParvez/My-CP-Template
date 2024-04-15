@@ -1,13 +1,14 @@
 # My-CP-Template
 
-- code snippet from https://snippet-generator.app/
+- Code snippet from <a href="https://snippet-generator.app/" target="_blank">Snippet Generator</a>
+
   
 ```bash
-  
+
 
 //        ****************  Author :  Tashin.Parvez  ****************
 //        ************* United International University *************
-//        ****************  Updated:    16/03/24     ****************
+//        ****************  Updated:    15/04/24     ****************
 
 #include <bits/stdc++.h>
 #define faster                        \
@@ -21,10 +22,11 @@
 #define nl               "\n"
 using   namespace        std;
 
-#define newLine          cout << nl;
+#define newline          cout << nl;
 
 // data_type_compressions :
 #define int              long long
+#define ll               long long
 #define ull              unsigned long long
 #define ld               long double
 
@@ -36,29 +38,21 @@ using   namespace        std;
 #define si(n)                  cin >> n;              // input  [ si = scan input]
 #define output(x)              cout << x << nl        // output
 
-#define square(x)              ((x) * (x))            // x^2  square
 
-#define setDec(x)              fixed << setprecision(x)
+#define setdec(x)              fixed << setprecision(x)
 
 #define len(s)                 s.length()
-#define tolower(s)             transform(s.begin(), s.end(), s.begin(), ::tolower) // make string lowercase
 
-#define YES                    cout << "YES" << endl;
-#define Yes                    cout << "Yes" << endl;
-#define NO                     cout << "NO" << endl;
-#define No                     cout << "No" << endl;
-
-#define min3(a, b, c)          min(min(a, b), c)
-#define mid3(a, b, c)          (a + b + c) - max3(a, b, c) - min3(a, b, c) 
-#define max3(a, b, c)          max(max(a, b), c)
-
-#define SumInRange(a, b)       ((b * (b + 1)) / 2) - (((a - 1) * (a)) / 2)
+#define YES                    cout << "YES" << nl;
+#define Yes                    cout << "Yes" << nl;
+#define NO                     cout << "NO" << nl;
+#define No                     cout << "No" << nl;
 
 
 //--------------------------------- Debug --------------------------------
 
-#define deb(n)                 cout << "Tashin   " << #n << " = " << n << endl;
-#define tashin                 cout << "____Tashin____" << endl;               // Pointer
+#define deb(n)                 cout << "Tashin   " << #n << " = " << n << nl;
+#define tashin                 cout << "____Tashin____" << nl;               // Pointer
 
 
 #define dbg(...) __f(#__VA_ARGS__, __VA_ARGS__)
@@ -94,15 +88,21 @@ void __f(const char *names, Arg1 &&arg1, Args &&...args)
 #define vsi                      vector<pair<string, int>>
 
 #define pb                       push_back
-#define pop                      pop_back
+#define pob                      pop_back
+
+#define vmin(a)                  (*min_element(a.begin(), a.end())) 
+#define vmax(a)                  (*max_element(a.begin(), a.end()))
+#define vsum(a)                  accumulate(a.begin(), a.end(), 0LL)
 
 //-------------------------------- Sort -------------------------------
 
-#define vsort(v)                 sort(v.begin(), v.end())                    // Vector asc
-#define vSortRev(v)              sort(v.begin(), v.end(), greater<int>())    // Vector dec
+#define all(a)                   (a).begin(),(a).end()
 
-#define arrSort(a)               sort(a, a + n)                              // array asc
-#define arrSortRev(a)            sort(a, a + n, greater<int>())              // array dec
+#define vsort(v)                 sort(v.begin(), v.end())                    // Vector asc
+#define vsortrev(v)              sort(v.begin(), v.end(), greater<int>())    // Vector dec
+
+#define arrsort(a)               sort(a, a + n)                              // array asc
+#define arrsortrev(a)            sort(a, a + n, greater<int>())              // array dec
 
 //-------------------------------- pair -------------------------------
 
@@ -116,32 +116,60 @@ typedef pair<string, int>        psi;
 #define ss                       second
 
 //-------------------------------- Map -------------------------------
-#define mapii                    map<int, int>
-#define mapsi                    map<string, int>
-#define mapci                    map<char, int>
 
-/******************************* Some Func ********************************************/
+#define mpii                     map<int, int>
+#define mpsi                     map<string, int>
+#define mpci                     map<char, int>
 
-int getASCII(char c)
-{
-    return c;
-}
 
-bool evenOdd(int n) //  Odd = 0   &&   Even = 1
-{
-    if (!(n & 1)) // Formula:  EVEN  (for even --->> i&1 == 0)
-        return 1;
-    else
-        return 0;
-}
 
-void printarray(int arr[], int len)
-{
-    for (int i = 0; i < len; i++)
-        (i + 1 == len) ? cout << arr[i] << nl : cout << arr[i] << " ";
-}
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Some Func $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-/********************************* CODE NOW *************************************************/
+
+//================== Int func's =================    
+
+
+#define  min3(a, b, c)          min(min(a, b), c)
+#define  mid3(a, b, c)          (a + b + c) - max3(a, b, c) - min3(a, b, c) 
+#define  max3(a, b, c)          max(max(a, b), c)
+
+ 
+ll   revnum     (ll n)          { ll tmp=n,ans=0,r;while(tmp){r=tmp%10;ans=ans*10+r;tmp/=10;}return ans;}
+
+bool isprime    (ll n)          {if(n<2)return false;if(n==2)return true;if(n%2==0)return false;for(ll i=3;i<=sqrt(n);i+=2){if(n%i==0)return false;}return true;}
+bool issquare   (ll x)          {ll sq=sqrt(x);return sq*sq==x;}
+bool iseven     (int n)         { return !(n & 1);}
+
+ll   POW        (ll a, ll b)    {if(!b) return 1;ll r=POW(a,b/2);if(b%2) return r*r*a;else return r*r;}
+
+#define suminrange(a, b)       ((b * (b + 1)) / 2) - (((a - 1) * (a)) / 2)
+
+
+
+//================== string func's =================    
+
+ll     strtoint     (string s)  {istringstream ss(s);ll n;ss>>n;return n;}
+string inttostr     (ll x)      {string s;while(x){s+=(char)(x%10)+'0';x/=10;}reverse(all(s));return s;}
+
+#define strtolower(s)             transform(s.begin(), s.end(), s.begin(), ::tolower) // make string lowercase
+
+
+
+//================== Char func's =================
+int  getASCII(char c) { return c;}
+
+
+
+
+//================== Print func's =================
+
+void printarr (int arr[], int len)     { for (int i = 0; i < len; i++) (i + 1 == len) ? cout << arr[i] << nl : cout << arr[i] << " ";}
+void printvec (const vector<int>& vec) { for (size_t i = 0; i < vec.size(); ++i) { if (i + 1 == vec.size()) cout << vec[i] << nl; else cout << vec[i] << " "; } }
+
+
+
+
+/************************************************* CODE NOW *************************************************/
 
 /*
 
@@ -162,15 +190,16 @@ const int mod = 1000000007;
 
 
 
-void solution()
+void solution()  // main solution
 {
     int a, b, c, d;
-    int i, j, k, l, m, n;
-    int  x, y, z, t;
-    int cnt = 0, index = -1, sum = 0;
+    int i, j, k, l, m, n, q;
+    int x, y, z, t;
+
     string s;
     bool flag = false;
-    int ans;
+
+    int ans, cnt = 0, idx = -1, sum = 0;
 
     cin >> n;
 
@@ -180,8 +209,7 @@ void solution()
 
 
 
-
-    cout<< ans <<nl;
+    // newline;
 
 }
 
@@ -201,7 +229,6 @@ int32_t main()
 
     CRACKED;
 }
-
 
 ```
 
