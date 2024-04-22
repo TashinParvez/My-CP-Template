@@ -4,20 +4,17 @@
 
   
 ```bash
-
-
-//        ****************  Author :  Tashin.Parvez  ****************
-//        ************* United International University *************
-//        ****************  Updated:    15/04/24     ****************
+/**
+ *    Author :  Tashin.Parvez
+ *    United International University
+ *    Created: 22.04.2024
+**/
 
 #include <bits/stdc++.h>
-#define faster                        \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(0);                       \
-    cout.tie(0);
+#define faster           ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
-#define Read(x)          freopen(x, "r", stdin)
-#define Write(x)         freopen(x, "w", stdout)
+//#define Read(x)          freopen(x, "r", stdin)
+//#define Write(x)         freopen(x, "w", stdout)
 #define CRACKED          return 0;
 #define nl               "\n"
 using   namespace        std;
