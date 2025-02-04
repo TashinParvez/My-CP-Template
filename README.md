@@ -7,7 +7,7 @@
 /*
  *        Author :  Tashin.Parvez
  *    United International University
- *          Created: 09.11.2024
+ *          Created: 04.02.2025
  */
 
 #include <bits/stdc++.h>
@@ -19,16 +19,16 @@ using   namespace              std;
 #define ll                     long long
 #define ull                    unsigned long long
 #define ld                     long double
-#define output(x)              cout << x << nl
 #define setdec(x)              fixed << setprecision(x)
-#define YES                    cout << "YES" << nl;
-#define Yes                    cout << "Yes" << nl;
-#define NO                     cout << "NO" << nl;
-#define No                     cout << "No" << nl;
+#define YES                    {cout << "YES" << nl;}
+#define Yes                    {cout << "Yes" << nl;}
+#define NO                     {cout << "NO" << nl;}
+#define No                     {cout << "No" << nl;}
 
 //--------------------------------- Debug --------------------------------
 #define tashin                 cout << "____Tashin____" << nl;
 #define parvez                 cout << "____Parvez____" << nl;
+#define divider                cout << " \n----------------------------\n" << nl;
 
 #define dbg(...) __f(#__VA_ARGS__, __VA_ARGS__)
 template <typename Arg1>                          void __f(const char *name, Arg1 &&arg1) { cout << name << " = " << arg1 << std::endl; }
@@ -110,11 +110,21 @@ int           eulerPhi(int n, vector<int> &primeNumbers)     { int phi = n; for 
 #define   MID(a, b)              a + ((b - a) / 2);
 #define   suminrange(a, b)       ((b * (b + 1)) / 2) - (((a - 1) * (a)) / 2)
 
+template <typename T, typename U> auto max(T a, U b) -> common_type_t<T, U> { return (a > b) ? a : b; }
+
 ll        numrev(ll n)           { ll tmp=n,ans=0,r;while(tmp){r=tmp%10;ans=ans*10+r;tmp/=10;}return ans;}
 bool      isprime(ll n)          {if(n<2)return false;if(n==2)return true;if(n%2==0)return false;for(ll i=3;i<=sqrt(n);i+=2){if(n%i==0)return false;}return true;}
 bool      issquare(ll x)         {ll sq=sqrt(x);return sq*sq==x;}
 bool      iseven(int n)          { return !(n & 1);}
-ll        POW(ll a, ll b)        {if(!b) return 1;ll r=POW(a,b/2);if(b%2) return r*r*a;else return r*r;}
+
+//----------MOD---------------
+constexpr ll  POW(ll a, ll b)                 {if(b==0) return 1;ll r=POW(a,b/2);if(b%2) return r*r*a;else return r*r;}
+constexpr ll  MOD(ll num, ll mod)             { return ((num % mod + mod) % mod); }
+constexpr ll  BIGMOD(ll n, ll power, ll mod)  { if (power == 0) return 1; ll ans = BIGMOD(n, power / 2, mod); ans = ((ans % mod) * (ans % mod)) % mod; if (power % 2 == 1) return (ans * (n % mod)) % mod; else return ans; }
+inline ll     modAdd(ll a, ll b, ll mod)      { return MOD((MOD(a,mod) + MOD(b,mod)), mod); }
+inline ll     modSub(ll a, ll b, ll mod)      { return MOD(((MOD(a,mod) - MOD(b,mod))+ mod), mod); }
+inline ll     modMul(ll a, ll b, ll mod)      { return MOD((MOD(a, mod) * MOD(b, mod)), mod); }
+inline ll     modDiv(ll a, ll b, ll mod)      { return modMul(a, BIGMOD(b, mod - 2, mod), mod); }
 
 //------------------------------- string func's -------------------------------
 
@@ -125,8 +135,8 @@ string    inttostr(ll x)         {string s;while(x){s+=(char)(x%10)+'0';x/=10;}r
 #define   strrev(s)              reverse(s.begin(), s.end())
 int       getASCII(char c)       { return c;}
 
-void      arrprint(int arr[], int len)     { for (int i = 0; i < len; i++) (i + 1 == len) ? cout << arr[i] << nl : cout << arr[i] << " ";}
-void      vprint(const vector<int>& vec)   { for (size_t i = 0; i < vec.size(); ++i) { if (i + 1 == vec.size()) cout << vec[i] << nl; else cout << vec[i] << " "; } }
+#define   arrprint(arr, len)     for (int i = 0; i < (len); i++) cout << (arr)[i] << (i + 1 == (len) ? '\n' : ' ');
+#define   vprint(vec)            for (size_t i = 0; i < (vec).size(); ++i) cout << (vec)[i] << (i + 1 == (vec).size() ? '\n' : ' '); 
 
 /* --------------------- REMEMBER --------------------
    int       = -2e31  to  2e31 -1      2e31 = 2*10^9     max Digit = 10
@@ -159,12 +169,12 @@ void solution()  // main solution
     string s; char chr;
     bool flag = false;
 
-    int ans, cnt = 0, idx = -1, sum = 0, product = 1;
+    int ans = 0, cnt = 0, idx = -1, sum = 0, product = 1, temp = 0;
     int mn = INT_MAX, mx = INT_MIN;
 
     cin >> n;
     
-
+    
 
 
 
